@@ -4,6 +4,7 @@ import "./App.scss";
 import { useState } from "react";
 
 function App() {
+  const [trancId, setTranc] = useState(1);
   const [balance, setBalance] = useState(0);
   const [address, setAddress] = useState("");
 
@@ -12,10 +13,11 @@ function App() {
       <Wallet
         balance={balance}
         setBalance={setBalance}
+        setTranc={setTranc}
         address={address}
         setAddress={setAddress}
       />
-      <Transfer setBalance={setBalance} address={address} />
+      <Transfer setBalance={setBalance} address={address} trancId={trancId} />
     </div>
   );
 }

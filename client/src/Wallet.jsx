@@ -1,14 +1,15 @@
 import server from "./server";
 
-function Wallet({ address, setAddress, balance, setBalance }) {
+function Wallet({ address, setAddress, balance, setBalance, setTranc}) {
   async function onChange(evt) {
     const address = evt.target.value;
     setAddress(address);
     if (address) {
       const {
-        data: { balance },
+        data: { balance , trancId },
       } = await server.get(`balance/${address}`);
       setBalance(balance);
+      setTranc(trancId);
     } else {
       setBalance(0);
     }
